@@ -1,0 +1,39 @@
+
+
+services:
+  restus:
+    container_name: restus
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - postgres_restus
+    env_file:
+      - restus.env
+    ports:
+      - 8090:8080
+    networks:
+      - restus
+
+  postgres_restus:
+    container_name: postgres_restus
+    build:
+      context: build/postgres
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
+    ports:
+      - 5555:5432
+    networks:
+      - restus
+
+networks:
+  restus:
+    name: restus
+
+volumes:
+  postgres:

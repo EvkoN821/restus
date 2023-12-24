@@ -1,0 +1,39 @@
+
+
+services:
+  faculus:
+    container_name: faculus
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - postgres
+    env_file:
+      - faculus.env
+    ports:
+      - 8090:8080
+    networks:
+      - faculus
+
+  postgres:
+    container_name: postgres
+    build:
+      context: build/postgres
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
+    ports:
+      - 5555:5432
+    networks:
+      - faculus
+
+networks:
+  faculus:
+    name: faculus
+
+volumes:
+  postgres:
