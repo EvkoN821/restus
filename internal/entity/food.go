@@ -8,4 +8,6 @@ type Food struct {
 	Price    int    `db:"price"`
 	Calories int    `db:"calories"`
 	Info     string `db:"info"`
+	Comp     string `db:"comp"`
+	Prep     int    `db:"prep"`
 }

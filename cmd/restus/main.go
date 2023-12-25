@@ -24,6 +24,9 @@ func main() {
 	//postgres://dynus:dynus@localhost:5555/dynus
 	//postgres://restus:restus@postgres_restus:5432/restus
 	//postgres://restus:restus@postgres:5555/restus
+
+	//postgres://restus:restus@localhost:5555/restus
+
 	flag.StringVar(&dbUrl, "db", "postgres://restus:restus@postgres_restus:5432/restus", "database connection url")
 	flag.StringVar(&listen, "listen", ":8080", "server listen interface")
 	flag.StringVar(&logLevel, "log-level", "debug", "log level: panic, fatal, error, warning, info, debug, trace")

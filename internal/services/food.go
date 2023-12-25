@@ -31,18 +31,20 @@ func (s *FoodService) GetFoods() ([]map[string]string, error) {
 			"price":     strconv.Itoa(item.Price),
 			"calories":  strconv.Itoa(item.Calories),
 			"info":      item.Info,
+			"comp":      item.Comp,
+			"prep":      strconv.Itoa(item.Prep),
 		}
 		foodsSlice = append(foodsSlice, foodsMap)
 	}
 	return foodsSlice, nil
 }
 
-func (s *FoodService) InsertFood(name, info string, courseId, weight, price, calories int) error {
-	return s.repo.InsertFood(entity.Food{Id: 0, CourseId: courseId, Name: name, Weight: weight, Price: price, Calories: calories, Info: info})
+func (s *FoodService) InsertFood(name, info, comp string, courseId, weight, price, calories, prep int) error {
+	return s.repo.InsertFood(entity.Food{Id: 0, CourseId: courseId, Name: name, Weight: weight, Price: price, Calories: calories, Info: info, Comp: comp, Prep: prep})
 }
 
-func (s *FoodService) UpdateFood(name, info string, id, weight, price, calories int) error {
-	return s.repo.UpdateFood(entity.Food{Id: id, CourseId: 0, Name: name, Weight: weight, Price: price, Calories: calories, Info: info})
+func (s *FoodService) UpdateFood(name, info, comp string, id, weight, price, calories, prep int) error {
+	return s.repo.UpdateFood(entity.Food{Id: id, CourseId: 0, Name: name, Weight: weight, Price: price, Calories: calories, Info: info, Comp: comp, Prep: prep})
 }
 
 func (s *FoodService) DeleteFood(id int) error {

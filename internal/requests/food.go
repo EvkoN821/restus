@@ -11,6 +11,8 @@ type InsertFoodRequest struct {
 	Price    int    `json:"price" binding:"required"`
 	Calories int    `json:"calories" binding:"required"`
 	Info     string `json:"info" binding:"required"`
+	Comp     string `json:"comp" binding:"required"`
+	Prep     int    `json:"prep" binding:"required"`
 }
 
 type UpdateFoodRequest struct {
@@ -20,6 +22,8 @@ type UpdateFoodRequest struct {
 	Price    int    `json:"price" binding:"required"`
 	Calories int    `json:"calories" binding:"required"`
 	Info     string `json:"info" binding:"required"`
+	Comp     string `json:"comp" binding:"required"`
+	Prep     int    `json:"prep" binding:"required"`
 }
 
 type DeleteFoodRequest struct {

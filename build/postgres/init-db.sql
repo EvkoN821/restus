@@ -16,7 +16,9 @@ create table Foods(
     weight int,
     price int,
     calories int,
-    info varchar
+    info varchar,
+    prep int,
+    comp varchar
 );
 
 create table Users(

@@ -66,7 +66,7 @@ func (h *FoodHandlers) InsertFood(c *gin.Context) {
 		return
 	}
 
-	if err := h.svc.InsertFood(req.Name, req.Info, req.CourseId, req.Weight, req.Price, req.Calories); err != nil {
+	if err := h.svc.InsertFood(req.Name, req.Info, req.Comp, req.CourseId, req.Weight, req.Price, req.Calories, req.Prep); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "insert food error", "text": err.Error()})
 		return
 	}
@@ -82,7 +82,7 @@ func (h *FoodHandlers) UpdateFood(c *gin.Context) {
 		return
 	}
 
-	if err := h.svc.UpdateFood(req.Name, req.Info, req.Id, req.Weight, req.Price, req.Calories); err != nil {
+	if err := h.svc.UpdateFood(req.Name, req.Info, req.Comp, req.Id, req.Weight, req.Price, req.Calories, req.Prep); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "update food error", "text": err.Error()})
 		return
 	}
