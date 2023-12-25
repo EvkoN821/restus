@@ -27,5 +27,3 @@ create table Users(
 );
 
 insert into users (login, pwd, user_type) values ('admin', 'admin', 1), ('user', 'user', 0);
-
--- insert into users (id) select * from generate_series(1, 1000000)

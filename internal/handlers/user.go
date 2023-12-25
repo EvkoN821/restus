@@ -4,6 +4,7 @@ import (
 	"github.com/IlyaZayats/restus/internal/requests"
 	"github.com/IlyaZayats/restus/internal/services"
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 	"net/http"
 )
 
@@ -27,6 +28,7 @@ func (h *UserHandlers) initRoute() {
 
 func (h *UserHandlers) Login(c *gin.Context) {
 	req, ok := GetRequest[requests.LoginRequest](c)
+	logrus.Debug(req)
 	if !ok {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "login request error", "text": ok})
 		return
@@ -36,5 +38,6 @@ func (h *UserHandlers) Login(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "get users error", "text": err.Error()})
 		return
 	}
+	logrus.Debug(user)
 	c.JSON(http.StatusOK, gin.H{"status": "ok", "data": user})
 }

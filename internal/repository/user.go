@@ -28,7 +28,7 @@ func (r *PostgresUserRepository) Login(user entity.User) (int, error) {
 }
 
 func (r *PostgresUserRepository) parseRow(rows pgx.Rows) (int, error) {
-	var userType int
+	var userType = -1
 	defer rows.Close()
 	for rows.Next() {
 		if err := rows.Scan(&userType); err != nil {
